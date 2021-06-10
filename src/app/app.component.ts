@@ -13,6 +13,8 @@ export class AppComponent implements OnInit,OnDestroy {
   orders: any | undefined;
   test: any[] | undefined;
   subscription: Subscription ;
+  private current_port = window.location.port;
+  private mongo_url;
 
   addToCart(item : any, quantity: any) {
     console.log(item);
@@ -39,11 +41,16 @@ export class AppComponent implements OnInit,OnDestroy {
 
 
   constructor (private http: HttpClient){
-    this.subscription= http.get("http://localhost:3000/" || "/" ).subscribe(response=> {
+    if(this.current_port=='4200')
+    this.mongo_url= 'http://localhost:3000';
+  else
+    this.mongo_url= '';
+
+    this.subscription= http.get(this.mongo_url ).subscribe(response=> {
     this.productList=response;
     console.log(response);
   });
-  http.get("http://localhost:3000/my-orders" || "/my-orders").subscribe(response=> {
+  http.get(this.mongo_url+"/my-orders").subscribe(response=> {
     this.orders=response;
     console.log(response);
   });
