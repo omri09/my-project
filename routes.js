@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+// Serve only the static files form the dist directory
+router.use(express.static(__dirname + '/dist/project'));
 
 // Serve only the static files form the dist directory
 router.use(express.static(__dirname + '/dist/project'));
