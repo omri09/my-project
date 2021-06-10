@@ -21,6 +21,8 @@ router.use(express.static(__dirname + '/dist/project'));
 router.get('/', async (req, res) => {
   const products = await Product.find();
   res.send(products);
+  res.sendFile(__dirname+'/dist/project/index.html');
+
 });
 
 router.get('/my-orders', async (req, res) => {
