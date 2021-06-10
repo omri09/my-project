@@ -10,6 +10,7 @@
     </div>
 
     <div style="width: 100%; text-align: center;">
+        <p>My Orders - from MongoDB</p>
         <div *ngFor="let order of orders">
             {{order._id}}
             <div *ngFor="let c of order.orderDetails">
@@ -17,7 +18,7 @@
             {{c.qty}}
         </div>
         </div>
-        <p>Cart</p>
+        <p>Cart- from LocalStorage</p>
         <div *ngFor="let t of test">
             {{t.name}} {{t.qty}}
     </div>
