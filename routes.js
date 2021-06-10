@@ -20,14 +20,14 @@ router.use(express.static(__dirname + '/dist/project'));
 
 router.get('/', async (req, res) => {
   const products = await Product.find();
-  res.send(products);
-  res.sendFile(__dirname+'/dist/project/index.html');
+  res.json(products);
+  //res.sendFile(__dirname+'/dist/project/index.html');
 
 });
 
 router.get('/my-orders', async (req, res) => {
   const orders = await Order.find();
-  res.send(orders);
+  res.json(orders);
 });
 
 router.post('/', async (req, res) => {
