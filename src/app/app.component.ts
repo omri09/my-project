@@ -12,7 +12,9 @@ export class AppComponent implements OnInit,OnDestroy {
   hello: string | undefined;
   orders: any | undefined;
   test: any[] | undefined;
-  subscription: Subscription ;
+  productSubscription: Subscription ;
+  orderSubscription: Subscription ;
+
   private current_port = window.location.port;
   private mongo_url;
 
@@ -41,25 +43,19 @@ export class AppComponent implements OnInit,OnDestroy {
 
 
   constructor (private http: HttpClient){
-    if(this.current_port=='4200')
-    this.mongo_url= 'http://localhost:3000';
-  else
-    this.mongo_url= '';
+    if(this.current_port=='4200') this.mongo_url= 'http://localhost:3000';
+    else this.mongo_url= '';
 
-    this.subscription= http.get(this.mongo_url+"/list" ).subscribe(response=> {
-    this.productList=response;
-    console.log(response);
-  });
-  http.get(this.mongo_url+"/my-orders").subscribe(response=> {
-    this.orders=response;
-    console.log(response);
-  });
+  this.productSubscription= http.get(this.mongo_url+"/list" ).subscribe(response=> {this.productList=response;});
+  this.orderSubscription=http.get(this.mongo_url+"/my-orders").subscribe(response=> {this.orders=response;});
+  };
    
-  }
   ngOnDestroy()
   {
-    this.subscription.unsubscribe();
-    console.log("unsub");
+    this.productSubscription.unsubscribe();
+    this.orderSubscription.unsubscribe();
+
+    console.log("unsubscribe");
   }
   title = 'project';
 }
