@@ -15,7 +15,7 @@ const Order = mongoose.model('Order', new mongoose.Schema({
 // Serve only the static files form the dist directory
 router.use(express.static(__dirname + '/dist/project'));
 
-studentRoute.get('/', function (req, res) {
+router.get('/', function (req, res) {
   res.sendFile(__dirname+'/dist/Project/index.html');
 });
 
