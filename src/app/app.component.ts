@@ -38,11 +38,11 @@ export class AppComponent implements OnInit,OnDestroy {
    }
 
   constructor (private http: HttpClient){
-    this.subscription= http.get("http://localhost:3000/" || window.location.port+"/" ).subscribe(response=> {
+    this.subscription= http.get("http://localhost:3000/" || "/" ).subscribe(response=> {
     this.productList=response;
     console.log(response);
   });
-  http.get("http://localhost:3000/my-orders" || window.location.port+"/my-orders").subscribe(response=> {
+  http.get("http://localhost:3000/my-orders" || "/my-orders").subscribe(response=> {
     this.orders=response;
     console.log(response);
   });
