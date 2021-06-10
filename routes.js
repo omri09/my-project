@@ -21,7 +21,7 @@ router.use(express.static(__dirname + '/dist/project'));
 router.get('/', async (req, res) => {
   const products = await Product.find();
   res.json(products);
-  //res.sendFile(__dirname+'/dist/project/index.html');
+  res.sendFile(__dirname+'/dist/project/index.html');
 
 });
 
