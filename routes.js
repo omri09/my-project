@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+// Serve only the static files form the dist directory
+router.use(express.static(__dirname + '/dist/project'));
 
+router.get('/', function(req,res) {
+    
+res.sendFile(path.join(__dirname+'/dist/project/index.html'));
+});
 
 const Product = mongoose.model('Product', new mongoose.Schema({
   productName : String,
