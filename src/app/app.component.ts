@@ -46,7 +46,7 @@ export class AppComponent implements OnInit,OnDestroy {
   else
     this.mongo_url= '';
 
-    this.subscription= http.get(this.mongo_url ).subscribe(response=> {
+    this.subscription= http.get(this.mongo_url+"/list" ).subscribe(response=> {
     this.productList=response;
     console.log(response);
   });
