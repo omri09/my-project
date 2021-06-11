@@ -13,13 +13,28 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   filteredProductList: any;
   orders: any;
   test: any[] | undefined;
-  productSubscription: Subscription ;
-  orderSubscription: Subscription ;
+  productSubscription: Subscription = new Subscription;
+  orderSubscription: Subscription = new Subscription;
 
   constructor (private HttpRequests: HttpRequestsService){
- 
-  this.productSubscription= HttpRequests.getProductsList().subscribe(response=> {this.productList= this.filteredProductList=response;});
-  this.orderSubscription=HttpRequests.getOrdersList().subscribe(response=> {this.orders=response;});
+  }
+  getProductList()
+  {
+    this.productSubscription= this.HttpRequests.getProductsList().subscribe(response=> {this.productList= this.filteredProductList=response;});
+
+  }
+  getOrderList()
+  {
+    this.orderSubscription=this.HttpRequests.getOrdersList().subscribe(response=> {this.orders=response;});
+
+  }
+  addProduct()
+  {
+    this.HttpRequests.addProduct().subscribe( ()=>{
+      this.getProductList();
+      this.getOrderList();
+    });
+
   }
 
   filter(query: string)
@@ -37,6 +52,8 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   }
   ngOnInit()
   {
+    this.getProductList();
+    this.getOrderList();
     this.PrintLocal();
   }
 

@@ -31,11 +31,19 @@ router.get('/my-orders', async (req, res) => {
   res.json(orders);
 });
 
-router.post('/', async (req, res) => {
-  let product = new Product({ productName: 'Tomatoes', productPrice:'10', productImage: 'https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' });
-  genre = await product.save();
-  res.send(genre);
+router.post('/add', async (req, res) => {
+  //let product = new Product({ productName: 'Tomatoes', productPrice:'10', productImage: 'https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' });
+ let product = new Product(req.body);
+ genre = product.save().then(() => {
+  //console.log(stud);        
+  res.status(200).json({'students' : 'Student added successfuly!'});
+}).catch(err => {
+  //console.log(err);
+  res.status(400).send('Unable to add!');        
 });
+});
+  // res.send(genre);
+
 
 router.post('/my-orders', async (req, res) => {
   let orderDetailsArray=[{"productName": "Ready", "qty": 21, },{ "productName": "dssd", "qty": 455 }];
