@@ -8,16 +8,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home-component.component.css']
 })
 export class HomeComponentComponent implements OnInit {
-  productList: any | undefined;
-  filteredProductList: any | undefined;
-  hello: string | undefined;
-  orders: any | undefined;
+  productList: any;
+  filteredProductList: any;
+  orders: any;
   test: any[] | undefined;
   productSubscription: Subscription ;
   orderSubscription: Subscription ;
+  path: String;
 
-  private currentPort = window.location.port;
-  private path;
+  constructor (private http: HttpClient){
+    console.log("Port " + window.location.port);
+    if(window.location.port=='4200') this.path= 'http://localhost:3000';
+    else this.path= '';
+
+  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList= this.filteredProductList=response;});
+  this.orderSubscription=http.get(this.path+"/my-orders").subscribe(response=> {this.orders=response;});
+  }
 
   filter(query: string)
   {
@@ -47,14 +53,6 @@ export class HomeComponentComponent implements OnInit {
    } 
    }
 
-
-  constructor (private http: HttpClient){
-    if(this.currentPort=='4200') this.path= 'http://localhost:3000';
-    else this.path= '';
-
-  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList= this.filteredProductList=response;});
-  this.orderSubscription=http.get(this.path+"/my-orders").subscribe(response=> {this.orders=response;});
-  };
    
   ngOnDestroy()
   {
