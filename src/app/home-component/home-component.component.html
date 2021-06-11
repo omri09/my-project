@@ -1,6 +1,6 @@
-<app-nav></app-nav>
 <div class= "row" style="width: 100%; text-align: center;">
-   <div class= "col-sm" style="border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block; margin: auto; margin: 15px; background: grey; " *ngFor="let item of productList">
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search..">
+   <div class= "col-sm" style="border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block; margin: auto; margin: 15px; background: grey; " *ngFor="let item of filteredProductList">
    <img style="width:240px; height: 180px" src= {{item.productImage}}><br>
    <p>{{item.productName}}</p>
    <p>{{item.productPrice}}$</p>

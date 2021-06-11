@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponentComponent implements OnInit {
   productList: any | undefined;
+  filteredProductList: any | undefined;
   hello: string | undefined;
   orders: any | undefined;
   test: any[] | undefined;
@@ -18,6 +19,13 @@ export class HomeComponentComponent implements OnInit {
   private currentPort = window.location.port;
   private path;
 
+  filter(query: string)
+  {
+    this.filteredProductList= (query) ? 
+    this.productList.filter((p: { productName: string; }) => p.productName.toLowerCase().includes(query.toLowerCase())):
+    this.productList;
+
+  }
   addToCart(item : any, quantity: any) {
     console.log(item);
     localStorage.setItem(item.productName, quantity);
@@ -36,9 +44,7 @@ export class HomeComponentComponent implements OnInit {
     for (var i = 0; i < localStorage.length; i++){
       let obj={"name": localStorage.key(i), "qty": localStorage.getItem(localStorage.key(i) || "null")};
       this.test?.push(obj);
-      console.log(localStorage.key(i));
    } 
-   console.log(this.test);
    }
 
 
@@ -46,7 +52,7 @@ export class HomeComponentComponent implements OnInit {
     if(this.currentPort=='4200') this.path= 'http://localhost:3000';
     else this.path= '';
 
-  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList=response;});
+  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList= this.filteredProductList=response;});
   this.orderSubscription=http.get(this.path+"/my-orders").subscribe(response=> {this.orders=response;});
   };
    
