@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './home-component.component.html',
   styleUrls: ['./home-component.component.css']
 })
-export class HomeComponentComponent implements OnInit {
+export class HomeComponentComponent implements OnInit, OnDestroy {
   productList: any;
   filteredProductList: any;
   orders: any;
