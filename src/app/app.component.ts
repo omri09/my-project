@@ -15,8 +15,8 @@ export class AppComponent implements OnInit,OnDestroy {
   productSubscription: Subscription ;
   orderSubscription: Subscription ;
 
-  private current_port = window.location.port;
-  private mongo_url;
+  private currentPort = window.location.port;
+  private path;
 
   addToCart(item : any, quantity: any) {
     console.log(item);
@@ -43,11 +43,11 @@ export class AppComponent implements OnInit,OnDestroy {
 
 
   constructor (private http: HttpClient){
-    if(this.current_port=='4200') this.mongo_url= 'http://localhost:3000';
-    else this.mongo_url= '';
+    if(this.currentPort=='4200') this.path= 'http://localhost:3000';
+    else this.path= '';
 
-  this.productSubscription= http.get(this.mongo_url+"/list" ).subscribe(response=> {this.productList=response;});
-  this.orderSubscription=http.get(this.mongo_url+"/my-orders").subscribe(response=> {this.orders=response;});
+  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList=response;});
+  this.orderSubscription=http.get(this.path+"/my-orders").subscribe(response=> {this.orders=response;});
   };
    
   ngOnDestroy()
