@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Subscription } from 'rxjs';
+import { HttpRequestsService } from '../http-requests-service/http-requests.service';
 
 @Component({
   selector: 'app-home-component',
@@ -14,15 +15,11 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   test: any[] | undefined;
   productSubscription: Subscription ;
   orderSubscription: Subscription ;
-  path: String;
 
-  constructor (private http: HttpClient){
-    console.log("Port " + window.location.port);
-    if(window.location.port=='4200') this.path= 'http://localhost:3000';
-    else this.path= '';
-
-  this.productSubscription= http.get(this.path+"/list" ).subscribe(response=> {this.productList= this.filteredProductList=response;});
-  this.orderSubscription=http.get(this.path+"/my-orders").subscribe(response=> {this.orders=response;});
+  constructor (private HttpRequests: HttpRequestsService){
+ 
+  this.productSubscription= HttpRequests.getProductsList().subscribe(response=> {this.productList= this.filteredProductList=response;});
+  this.orderSubscription=HttpRequests.getOrdersList().subscribe(response=> {this.orders=response;});
   }
 
   filter(query: string)
