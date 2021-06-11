@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 
 
 router.get('/list', async (req, res) => {
-  const products = await Product.find();
+  const products = await Product.find().sort( { _id : -1});
  res.json(products);
 
 });
