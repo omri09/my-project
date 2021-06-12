@@ -3,7 +3,7 @@
     <div *ngFor="let order of orders">
         {{order._id}}
         <div *ngFor="let c of order.orderDetails">
-        {{c.productName}}
-        {{c.qty}}
+        {{c.productName}}: {{c.qty}}
     </div>
+    <br>
     </div>

@@ -45,11 +45,16 @@ router.post('/add', async (req, res) => {
   // res.send(genre);
 
 
-router.post('/my-orders', async (req, res) => {
-  let orderDetailsArray=[{"productName": "Ready", "qty": 21, },{ "productName": "dssd", "qty": 455 }];
-  let product = new Order({ orderDetails: orderDetailsArray });
-  genre = await product.save();
-  res.send(genre);
+router.post('/add-order', async (req, res) => {
+  //let orderDetailsArray=[{"productName": "Ready", "qty": 21, },{ "productName": "dssd", "qty": 455 }];
+   obj = new Order({ orderDetails: req.body });
+  console.log(obj);
+  order = new Order(obj);
+  result =  order.save().then(() => {
+    res.status(200).json({'students' : 'Student added successfuly!'});
+  }).catch(err => {
+    res.status(400).send('Unable to add!');        
+  });
 });
 
 router.put('/:id', async (req, res) => {

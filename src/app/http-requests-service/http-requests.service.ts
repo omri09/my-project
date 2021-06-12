@@ -51,6 +51,13 @@ export class HttpRequestsService {
 
   }
 
+addOrder(obj :any)
+{
+  console.log("enter service");
+  return this.http.post(this.path+"/add-order", obj);
+
+}
+
   getProductsList()
   {
     return this.http.get(this.path+"/list" );

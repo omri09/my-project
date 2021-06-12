@@ -1,4 +1,6 @@
 <p>Cart- from LocalStorage</p>
 <div *ngFor="let t of test">
-    {{t.name}} {{t.qty}}
+    {{t.productName}}: {{t.qty}}
 </div>
+<br>
+<button (click)="checkout()">Checkout</button>
