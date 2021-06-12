@@ -15,11 +15,12 @@ const Order = mongoose.model('Order', new mongoose.Schema({
 // Serve only the static files form the dist directory
 router.use(express.static(__dirname + '/dist/project'));
 
-router.get('/', function (req, res) {
-  res.sendFile(__dirname+'/dist/Project/index.html');
-});
-router.get('/orders', function (req, res) {
-  res.sendFile(__dirname+'/dist/Project/index.html');
+//router.get('/', function (req, res) {
+//  res.sendFile(__dirname+'/dist/Project/index.html');
+//});
+router.get('*', function (req, res) {
+  const index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
 });
 
 router.get('/list', async (req, res) => {
