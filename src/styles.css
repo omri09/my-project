@@ -8,3 +8,8 @@ nav{
     padding-left: 5%;
 padding-right: 5%;
 }
+.nav-link
+{
+    padding: 5px;
+    color: white;
+}
