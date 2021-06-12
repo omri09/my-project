@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { HttpRequestsService } from '../http-requests-service/http-requests.service';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnDestroy {
+  orders: any;
+  orderSubscription: Subscription = new Subscription;
 
-  constructor() { }
+  constructor(private HttpRequests: HttpRequestsService) {
+   
+      this.orderSubscription=this.HttpRequests.getOrdersList().subscribe(response=> {this.orders=response;});
+  
+    
+   }
 
-  ngOnInit(): void {
-  }
+ ngOnDestroy(){
+  this.orderSubscription.unsubscribe();
+
+ }
 
 }

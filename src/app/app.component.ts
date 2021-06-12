@@ -8,6 +8,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  user: string ="input module-ts";
   title = 'project';
 }

@@ -1,1 +1,9 @@
-<p>orders works!</p>
+<div style="width: 100%; text-align: center;">
+    <p>My Orders - from MongoDB</p>
+    <div *ngFor="let order of orders">
+        {{order._id}}
+        <div *ngFor="let c of order.orderDetails">
+        {{c.productName}}
+        {{c.qty}}
+    </div>
+    </div>

@@ -9,13 +9,15 @@ import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponentComponent,
-    OrdersComponent
+    OrdersComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { OrdersComponent } from './orders/orders.component';
     CommonModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponentComponent},
+      {path: 'cart', component: CartComponent},
      {path: 'orders', component: OrdersComponent}
 
     ]
@@ -33,4 +36,7 @@ import { OrdersComponent } from './orders/orders.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+}
