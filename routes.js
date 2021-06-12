@@ -21,6 +21,9 @@ router.get('/', function (req, res) {
 router.get('/orders', function (req, res) {
   res.sendFile(__dirname+'/dist/Project/index.html');
 });
+router.get('/cart', function (req, res) {
+  res.sendFile(__dirname+'/dist/Project/index.html');
+});
 
 router.get('/list', async (req, res) => {
   const products = await Product.find().sort( { _id : -1});
