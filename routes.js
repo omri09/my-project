@@ -13,7 +13,8 @@ const Order = mongoose.model('Order', new mongoose.Schema({
 }),'Orders');
 
 // Serve only the static files form the dist directory
-router.use(express.static(__dirname + '/dist/project'));
+//router.use(express.static(__dirname + '/dist/project'));
+router.use(express.static('build'));
 
 //router.get('/', function (req, res) {
 //  res.sendFile(__dirname+'/dist/Project/index.html');
