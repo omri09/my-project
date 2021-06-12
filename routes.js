@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
   res.sendFile(__dirname+'/dist/Project/index.html');
 });
 router.get('/orders', function (req, res) {
-  res.sendFile(__dirname+'../dist/Project/index.html');
+  res.sendFile(__dirname+'/dist/Project/index.html');
 });
 router.get('/cart', function (req, res) {
   res.sendFile(__dirname+'/dist/Project/index.html');
