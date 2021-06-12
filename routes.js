@@ -16,14 +16,14 @@ const Order = mongoose.model('Order', new mongoose.Schema({
 router.use(express.static(__dirname + '/dist/project'));
 
 router.get('/', function (req, res) {
-  res.sendFile(__dirname+'/dist/Project/index.html');
+  res.sendFile(__dirname+'/dist/project/index.html');
 });
 router.get('/orders', function (req, res) {
-  res.sendFile(__dirname+'/dist/Project/index.html');
+  res.sendFile(__dirname+'/dist/project/index.html');
 
 });
 router.get('/cart', function (req, res) {
-  res.sendFile(__dirname+'/dist/Project/index.html');
+  res.sendFile(__dirname+'/dist/project/index.html');
 });
 
 router.get('/list', async (req, res) => {
