@@ -23,15 +23,8 @@ import { CartComponent } from './cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule,
-    RouterModule.forRoot([
-      {path: '', component: HomeComponentComponent},
-      {path: 'cart', component: CartComponent},
-     {path: 'orders', component: OrdersComponent}
-
-    ]
-
-    )
+    CommonModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
