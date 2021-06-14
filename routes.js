@@ -4,7 +4,8 @@ const router = express.Router();
 const Product = mongoose.model('Product', new mongoose.Schema({
   productName : String,
   productPrice : Number,
-  productImage: String
+  productImage: String,
+  categoryName: String
 }),'Products');
 
 const Order = mongoose.model('Order', new mongoose.Schema({
@@ -25,6 +26,7 @@ router.get('/orders', function (req, res) {
 router.get('/cart', function (req, res) {
   res.sendFile(__dirname+'/dist/project/index.html');
 });
+
 
 router.get('/list', async (req, res) => {
   const products = await Product.find().sort( { _id : -1});

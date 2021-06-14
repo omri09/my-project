@@ -1,6 +1,17 @@
-<div class= "row" style="width: 100%; text-align: center;">
+<div class="container">
+<div class= "row" >
+    <div class= "col-2" style="padding:15px">
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search..">
-   <div class= "col-sm" style="border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block; margin: auto; margin: 15px; background: grey; " *ngFor="let item of filteredProductList">
+    <div style="padding:5px 0px">
+        <a  routerLink="/" >All Categories</a>
+    </div>
+    <div style="padding:5px 0px"  *ngFor="let c of categoryList">
+        <a [routerLinkActive]="['is-active']"  routerLink="/" [queryParams]={category:c}>{{c | titlecase}}</a>
+    </div>
+</div>
+
+    <div class= "col-10">
+   <div *ngFor="let item of filteredProductList"  style="margin:15px; text-align: center; border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block;  background: grey; " >
    <img style="width:240px; height: 180px" src= {{item.productImage}}><br>
    <p>{{item._id}}</p>
    <p>{{item.productName}}</p>
@@ -9,7 +20,7 @@
    <button (click)='addToCart(item, quantity.value)' style="width: 100%; background: green; color:white; padding:15px;">add to cart</button>
     </div>
     </div>
-
-
+</div>
+</div>
      
         
