@@ -1,6 +1,5 @@
-<div class="container">
 <div class= "row" >
-    <div class= "col-2" style="padding:15px">
+    <div class= "col-md-2" style="padding:15px">
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search..">
     <div style="padding:5px 0px">
         <a  routerLink="/" >All Categories</a>
@@ -10,7 +9,7 @@
     </div>
 </div>
 
-    <div class= "col-10">
+    <div class= "col-md-10">
    <div *ngFor="let item of filteredProductList"  style="margin:15px; text-align: center; border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block;  background: grey; " >
    <img style="width:240px; height: 180px" src= {{item.productImage}}><br>
    <p>{{item._id}}</p>
@@ -20,7 +19,6 @@
    <button (click)='addToCart(item, quantity.value)' style="width: 100%; background: green; color:white; padding:15px;">add to cart</button>
     </div>
     </div>
-</div>
 </div>
      
         
