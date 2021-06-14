@@ -7,11 +7,15 @@ import { HttpRequestsService } from '../http-requests-service/http-requests.serv
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  count :number = 0;
-
+  //count :number = 0;
+  count: number=0;
   constructor(private httpRequests: HttpRequestsService){
 
-    httpRequests.refreshCart().subscribe(res => this.count = res);
+    httpRequests.refreshCart().subscribe(res => {
+      console.log("res is "+res);
+      this.count = res;
+      
+    });
 
   }
 

@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, observable, Subject, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpRequestsService {
-  path: String;
+  //path: String;
   private refresh_Cart: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor (private http: HttpClient){ 
     console.log("Port " + window.location.port);
-    if(window.location.port=='4200') this.path= 'http://localhost:3000';
-    else this.path= '';
+    //if(window.location.port=='4200') this.path= 'http://localhost:3000';
+    //else this.path= '';
    
   }
 
@@ -37,8 +37,7 @@ export class HttpRequestsService {
       console.log("count "+count);
   }
   this.refresh_Cart.next(count);
-  return this.refresh_Cart.asObservable();
-
+  return this.refresh_Cart;
   }
 
   addProduct(){
@@ -47,24 +46,24 @@ export class HttpRequestsService {
     productName: 'Tomatoes', 
     productPrice:'10', 
     productImage: 'https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' };  
-    return this.http.post(this.path+"/add", myNewStudentObj);
+    return this.http.post("/add", myNewStudentObj);
 
   }
 
 addOrder(obj :any)
 {
   console.log("enter service");
-  return this.http.post(this.path+"/add-order", obj);
+  return this.http.post("/add-order", obj);
 
 }
 
   getProductsList()
   {
-    return this.http.get(this.path+"/list" );
+    return this.http.get("/list" );
   }
   getOrdersList()
 {
-  return this.http.get(this.path+"/my-orders");
+  return this.http.get("/my-orders");
 
 }
 }
