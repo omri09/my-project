@@ -8,18 +8,15 @@ import { HttpRequestsService } from '../http-requests-service/http-requests.serv
 })
 export class CartComponent implements OnInit {
   test: any =[];
-
+  flagOrder :boolean = false;
   constructor(private httpReq : HttpRequestsService) { 
     
   }
 
   checkout(){
-    //for(let i= 0; i < this.test.length; i++)
-    //{
-     // console.log(this.test[i]);
-      //this.httpReq.addOrder(this.test[i]);
-      this.httpReq.addOrder(this.test).subscribe(res=> console.log(res));
-    //}
+
+      this.httpReq.addOrder(this.test).subscribe(res=> this.flagOrder=true);
+  
   }
   ngOnInit(): void {
  this.test=[];
