@@ -39,6 +39,19 @@ router.get('/my-orders', async (req, res) => {
   res.json(orders);
 });
 
+router.get('/find/:id', async (req, res) => {
+  // const { error } = validateGenre(req.body); 
+   //if (error) return res.status(400).send(error.details[0].message);
+   //db.bios.find( { _id: 5 } )
+   console.log(req.params.id);
+   const genre = await Product.find({ productName: req.params.id });
+  
+
+   if (!genre) return res.status(404).send('The genre with the given ID was not found.');
+   
+   res.json(genre);
+ });
+
 router.post('/add', async (req, res) => {
   //let product = new Product({ productName: 'Tomatoes', productPrice:'10', productImage: 'https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' });
  let product = new Product(req.body);

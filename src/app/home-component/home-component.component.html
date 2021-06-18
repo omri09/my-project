@@ -11,16 +11,15 @@
 </div>
 
     <div class= "col-md-10">
-   <div *ngFor="let item of filteredProductList"  style="margin:15px; text-align: center; border-radius: 10px; border: solid; border-width: 5px; border-color: black; display: inline-block;  background: grey; " >
+   <div *ngFor="let item of filteredProductList"  style="margin:15px; text-align: center; border-radius: 10px; border: solid; border-width: 5px; border-color: white; display: inline-block;  background: grey; " >
    <img style="width:240px; height: 180px" src= {{item.productImage}}><br>
    <p>{{item._id}}</p>
-   <p>{{item.productName}}</p>
-   <p>{{item.productPrice}}$</p>
+   <p>{{item.productName | titlecase}}</p>
+   <p>${{item.productPrice}}</p>
    Quantity: <input style="text-align: center;" type="number" #quantity name="quantity" value=1 min="1" max="5">
    <button (click)='addToCart(item, quantity.value)' style="width: 100%; background: green; color:white; padding:15px;">add to cart</button>
     </div>
     </div>
 </div>
 </div>
-     
         

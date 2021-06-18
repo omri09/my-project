@@ -27,11 +27,16 @@ export class HttpRequestsService {
 
 }
 
+findProductByName(name :string){
+  return this.http.get(this.path+"find/"+name);
+
+}
+
   addToCart(item : any, quantity: any) {
-    let sumOfItem :number = Number(localStorage.getItem(item.productName)) +Number(quantity);
+    let sumOfItem :number = Number(localStorage.getItem(item._id)) +Number(quantity);
     let result= sumOfItem.toString();
     console.log("result"+result);
-    localStorage.setItem(item.productName, result);
+    localStorage.setItem(item._id, result);
     return sumOfItem;
     
   }
@@ -42,9 +47,7 @@ export class HttpRequestsService {
     let count= 0;
     for (var i = 0; i < localStorage.length; i++){
       let obj=localStorage.getItem(localStorage.key(i) || "null") ;
-      console.log("rr "+obj);
       count+=Number(obj);
-      console.log("count "+count);
   }
   this.refresh_Cart.next(count);
   return this.refresh_Cart;

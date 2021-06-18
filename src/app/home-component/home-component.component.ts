@@ -15,9 +15,13 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   orders: any;
   productSubscription: Subscription = new Subscription;
   categoryList= ["vegetables", "fruits"];
+  flag=false;
+  flag2= (this.flag) ? 3 : 1;
+  
 
   constructor (private HttpRequests: HttpRequestsService, private route: ActivatedRoute){
-    
+    console.log("bam"+this.flag2);
+
   }
   filterCat(){
     this.route.queryParams.subscribe(params => {

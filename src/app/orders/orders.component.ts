@@ -10,6 +10,7 @@ import { HttpRequestsService } from '../http-requests-service/http-requests.serv
 export class OrdersComponent implements OnDestroy {
   orders: any;
   orderSubscription: Subscription = new Subscription;
+  orderPrice : any;
 
   constructor(private HttpRequests: HttpRequestsService) {
    

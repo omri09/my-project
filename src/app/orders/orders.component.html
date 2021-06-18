@@ -1,9 +1,9 @@
 <div style="width: 100%; text-align: center;">
     <p>My Orders - from MongoDB</p>
     <div *ngFor="let order of orders">
-        orderID: {{order._id}}
+        <span>orderID: {{order._id}}</span>
         <div *ngFor="let c of order.orderDetails">
-        {{c.productName}}: {{c.qty}}
+        <span>{{c.productName}}: {{c.qty}}</span>
     </div>
     <br>
     </div>

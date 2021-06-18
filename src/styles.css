@@ -1,16 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{ padding-top: 80px;
-padding-left: 5%;
-padding-right: 5%;
+body{ padding-top: 61px;
+    background: #111;
+}
+p , span, h1{
+color:white;
+}
+button{
+    color:white;
 }
 nav{
-    padding-left: 5%;
+    background: #040404;
+padding-left: 5%;
 padding-right: 5%;
 }
 .nav-link
 {
-    padding: 5px;
+    padding: 5px; 
+    margin: 0px 3%;
+    color: #888;
+}
+a:hover, .nav-link:focus, .nav-link:hover {
+    color: white;
     color: white;
 }
 .is-active{
@@ -24,4 +35,12 @@ padding-right: 5%;
 }
 a{
     text-decoration: none;
+    color:#888;
+}
+
+.cx-total {
+    background-color: #1c1c1b;
+    font-size: 1.125rem;
+    margin: 0 auto;
+    padding: .9375rem 0;
 }
