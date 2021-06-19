@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CartComponent } from './cart/cart.component';
     NavComponent,
     HomeComponentComponent,
     OrdersComponent,
-    CartComponent
+    CartComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

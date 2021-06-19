@@ -26,6 +26,11 @@ export class HttpRequestsService {
   return this.http.get(this.path+"/my-orders");
 
 }
+findOrderByID(ID :string){
+  console.log(this.path+"/find-order/"+ID);
+  return this.http.get(this.path+"/find-order/"+ID);
+
+}
 
 findProductByName(name :string){
   return this.http.get(this.path+"find/"+name);

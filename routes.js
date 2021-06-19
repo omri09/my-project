@@ -39,6 +39,13 @@ router.get('/my-orders', async (req, res) => {
   res.json(orders);
 });
 
+router.get('/find-order/:id', async (req, res) => {
+   console.log(req.params.id);
+   const genre = await Order.findOne({ _id: req.params.id });   
+   res.json(genre);
+ });
+
+
 router.get('/find/:id', async (req, res) => {
   // const { error } = validateGenre(req.body); 
    //if (error) return res.status(400).send(error.details[0].message);

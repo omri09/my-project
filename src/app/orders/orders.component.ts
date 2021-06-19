@@ -18,7 +18,9 @@ export class OrdersComponent implements OnDestroy {
   
     
    }
-
+   orderDetails(){
+     
+   }
  ngOnDestroy(){
   this.orderSubscription.unsubscribe();
 
