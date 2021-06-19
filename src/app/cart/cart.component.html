@@ -28,11 +28,13 @@
             <p>Price: ${{item.res.productPrice}}</p>
         </div>
         <div class="col-md-3" style="text-align: center;">
+            <span>Edit Quantity: </span><br>
             <input (keyup)= "flagPush=false;" (change)= "updateQuantity(item.res._id, qty.value); flagPush=true;" style="text-align: center;" type="number" #qty min="1"  value="{{item.qty}}"><br><br>
            <button type="button" class="btn btn-outline-primary" (click)="updateQuantity(item.res._id, qty.value)">Update</button>
+           <br><br>
         </div>
 
-        <div class="col-md-3"><p>Total Price: ${{item.res.productPrice* item.qty}}</p></div>
+        <div class="col-md-3" style="text-align: center;"><p>Total Price: ${{item.res.productPrice* item.qty}}</p></div>
         <hr style="margin-top: 15px; color: white;">
         </div>
       
