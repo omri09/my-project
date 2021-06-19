@@ -1,13 +1,24 @@
 <div class="container">
     <div class="row">
-<p>Your Order Details Are:</p>
-<span>OrderID: {{order._id}}</span>
-<span>orderTotalPrice: ${{order.orderTotalPrice}}</span>
-<hr>
-    <div *ngFor="let item of order.orderDetails; let i = index">
-        <span style="border-right: 1px solid #ccc!important;"> productName: {{item.res.productName | titlecase}} </span>
-        <span style="border-right: 1px solid #ccc!important;"> Quantity: {{item.qty}} </span>
-        <span style="border-right: 1px solid #ccc!important;"> Product Price: ${{item.res.productPrice}} </span>
-</div>
+        <div class="col-md-6">
+            <strong><span>Order ID: {{order._id}}</span></strong>
+    </div>
+    <div class="col-md-6">
+        <strong><span>Order Total Price: ${{order.orderTotalPrice}}</span></strong>
+        
+    </div>
+    </div>
+    <hr>
+
+
+    <div class=row *ngFor="let item of order.orderDetails; let i = index">
+        <div class="col-md-3"><img [src]="item.res.productImage" style="border-radius:5px; width:100%"/></div>
+        <div class="col-md-3">
+        <p> productName: {{item.res.productName | titlecase}} </p>
+        <p> Quantity: {{item.qty}} </p>
+        <p> Product Price: ${{item.res.productPrice}} </p>
+    </div>
+    <div class="col-md-3"><p>Total Price: ${{item.res.productPrice* item.qty}}</p></div>
+    <hr style="margin-top: 15px; color: white;">
 </div>
 </div>

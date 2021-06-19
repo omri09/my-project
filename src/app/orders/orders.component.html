@@ -2,7 +2,11 @@
     <p>My Orders - from MongoDB</p>
     <div *ngFor="let order of orders">
         <span>orderID: {{order._id}}</span><br>
-        <a style="border: 1px solid #ccc!important;" [routerLink]= "['/order-details', order._id]">Take Me to the Order Details</a>
+
+        <a [routerLink]= "['/order-details', order._id]">
+            <button type="button" class="btn btn-secondary">Take Me to the Order Details</button>
+
+        </a>
         <br>
     <br>
     </div>

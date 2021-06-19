@@ -41,14 +41,12 @@ router.get('/my-orders', async (req, res) => {
 });
 
 router.get('/find-order/:id', async (req, res) => {
-   console.log(req.params.id);
    const genre = await Order.findOne({ _id: req.params.id });   
    res.json(genre);
  });
 
 
 router.get('/find-product/:id', async (req, res) => {
-  console.log(req.params.id);
    const genre = await Product.findOne({ _id: req.params.id });   
    res.json(genre);
  });
@@ -68,7 +66,6 @@ router.post('/add', async (req, res) => {
 
 router.post('/add-order', async (req, res) => {
    obj = new Order({ orderDetails: req.body.items,  orderTotalPrice: req.body.totalOrderPrice});
-  console.log(obj);
   //order = new Order(obj);
   result =  obj.save().then(() => {
     res.status(200).json({'students' : 'Student added successfuly!'});

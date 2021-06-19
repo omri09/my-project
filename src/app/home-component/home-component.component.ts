@@ -20,7 +20,6 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   
 
   constructor (private HttpRequests: HttpRequestsService, private route: ActivatedRoute){
-    console.log("bam"+this.flag2);
 
   }
   filterCat(){

@@ -27,7 +27,6 @@ export class HttpRequestsService {
 
 }
 findOrderByID(ID :string){
-  console.log(this.path+"/find-order/"+ID);
   return this.http.get(this.path+"/find-order/"+ID);
 
 }
@@ -70,11 +69,7 @@ findProductByID(ID : any){
 
 addOrder(items :any, totalOrderPrice : any)
 {
-  console.log("enter service");
-  console.log(items);
-  console.log(totalOrderPrice);
   const order= {items, totalOrderPrice}
-  console.log(order);
 
   return this.http.post(this.path+"/add-order", order);
 
