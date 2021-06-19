@@ -1,10 +1,8 @@
 <div style="width: 100%; text-align: center;">
     <p>My Orders - from MongoDB</p>
     <div *ngFor="let order of orders">
-        <span>orderID: {{order._id}}</span>
-        <a style="border: 1px solid #ccc!important;" [routerLink]= "['/order-details', order._id]"> take me to order</a>
-        <div *ngFor="let c of order.orderDetails">
-        <span>{{c.productName}}: {{c.qty}}</span>
-    </div>
+        <span>orderID: {{order._id}}</span><br>
+        <a style="border: 1px solid #ccc!important;" [routerLink]= "['/order-details', order._id]">Take Me to the Order Details</a>
+        <br>
     <br>
     </div>

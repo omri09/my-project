@@ -7,35 +7,55 @@ import { HttpRequestsService } from '../http-requests-service/http-requests.serv
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent  {
-  test: any =[];
+  cart: any =[];
   flagOrder :boolean = false;
-  totalPrice : number = 0;
+  totalOrderPrice : number = 0;
   totalQuantity : number = 0;
   ProductsDetails : any;
+  cartIDs: any =[];
   constructor(private httpReq : HttpRequestsService) { 
-   httpReq.getProductsList().subscribe(res=>  this.ProductsDetails= res, err=> console.log(err), ()=> this.gfg());
+    this.searchCart();
+    this.loadCartDetails();
+  }
+
+   searchCart()
+  {  
+    for (var i = 0; i < localStorage.length; i++){
+    let key = localStorage.key(i);
+    let qty =localStorage.getItem(key || "null");
+     this.httpReq.findProductByID(key).subscribe(res =>  {this.cart.push({res, qty});
+     let calc :any= res;
+     this.totalOrderPrice+= Number(calc.productPrice) * Number(qty);
+     this.totalQuantity+=  Number(qty);
+     this.cartIDs.push(calc._id, Number(qty));
+
+    })
     
+    }
+
   }
+  loadCartDetails(){
+    console.log(this.cart)
+    //console.log(this.ProductsDetails);
+ //this.cart=[];
+ //for (var i = 0; i < localStorage.length; i++){
 
-  checkout(){
+   //let obj={"productName":this.ProductsDetails.find((element: { _id: string | null; }) => element._id == localStorage.key(i)).productName, 
+   //"qty": Number(localStorage.getItem(localStorage.key(i) || "null")),
+   //"productPrice": this.ProductsDetails.find((element: { _id: string | null; }) => element._id == localStorage.key(i)).productPrice,
+   //"totalPrice":this.ProductsDetails.find((element: { _id: string | null; }) => element._id == localStorage.key(i)).productPrice*Number(localStorage.getItem(localStorage.key(i) || "null"))};
+ 
+  // this.totalOrderPrice += obj.totalPrice;
+   //this.totalQuantity+= obj.qty;
+  // console.log("totalOrderPrice "+this.totalOrderPrice);
+  // this.cart?.push(obj);
+ // }
 
-      this.httpReq.addOrder(this.test).subscribe(res=> this.flagOrder=true);
-  
-  }
-  gfg(){
- this.test=[];
- let productPrice;
- for (var i = 0; i < localStorage.length; i++){
+}
 
-   let obj={"productName":this.ProductsDetails.find((element: { _id: string | null; }) => element._id == localStorage.key(i)).productName, 
-   "qty": Number(localStorage.getItem(localStorage.key(i) || "null")), 
-   "productPrice":this.ProductsDetails.find((element: { _id: string | null; }) => element._id == localStorage.key(i)).productPrice*Number(localStorage.getItem(localStorage.key(i) || "null"))};
+checkout(){
 
-   this.totalPrice += obj.productPrice * obj.qty;
-   this.totalQuantity+= obj.qty;
-   console.log("totalPrice "+this.totalPrice);
-   this.test?.push(obj);
-  }
+  this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.flagOrder=true);
 
 }
 }

@@ -9,7 +9,8 @@ const Product = mongoose.model('Product', new mongoose.Schema({
 }),'Products');
 
 const Order = mongoose.model('Order', new mongoose.Schema({
-  orderDetails : Array
+  orderDetails : Array,
+  orderTotalPrice: Number
   
 }),'Orders');
 
@@ -46,21 +47,13 @@ router.get('/find-order/:id', async (req, res) => {
  });
 
 
-router.get('/find/:id', async (req, res) => {
-  // const { error } = validateGenre(req.body); 
-   //if (error) return res.status(400).send(error.details[0].message);
-   //db.bios.find( { _id: 5 } )
-   console.log(req.params.id);
-   const genre = await Product.find({ productName: req.params.id });
-  
-
-   if (!genre) return res.status(404).send('The genre with the given ID was not found.');
-   
+router.get('/find-product/:id', async (req, res) => {
+  console.log(req.params.id);
+   const genre = await Product.findOne({ _id: req.params.id });   
    res.json(genre);
  });
 
 router.post('/add', async (req, res) => {
-  //let product = new Product({ productName: 'Tomatoes', productPrice:'10', productImage: 'https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' });
  let product = new Product(req.body);
  genre = product.save().then(() => {
   //console.log(stud);        
@@ -74,11 +67,10 @@ router.post('/add', async (req, res) => {
 
 
 router.post('/add-order', async (req, res) => {
-  //let orderDetailsArray=[{"productName": "Ready", "qty": 21, },{ "productName": "dssd", "qty": 455 }];
-   obj = new Order({ orderDetails: req.body });
+   obj = new Order({ orderDetails: req.body.items,  orderTotalPrice: req.body.totalOrderPrice});
   console.log(obj);
-  order = new Order(obj);
-  result =  order.save().then(() => {
+  //order = new Order(obj);
+  result =  obj.save().then(() => {
     res.status(200).json({'students' : 'Student added successfuly!'});
   }).catch(err => {
     res.status(400).send('Unable to add!');        

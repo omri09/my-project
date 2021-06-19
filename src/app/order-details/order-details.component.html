@@ -2,10 +2,12 @@
     <div class="row">
 <p>Your Order Details Are:</p>
 <span>OrderID: {{order._id}}</span>
-    <div *ngFor="let item of order.orderDetails">
-        <span style="border-right: 1px solid #ccc!important;"> productName: {{item.productName | titlecase}} </span>
+<span>orderTotalPrice: ${{order.orderTotalPrice}}</span>
+<hr>
+    <div *ngFor="let item of order.orderDetails; let i = index">
+        <span style="border-right: 1px solid #ccc!important;"> productName: {{item.res.productName | titlecase}} </span>
         <span style="border-right: 1px solid #ccc!important;"> Quantity: {{item.qty}} </span>
-        <span>Price: ${{item.productPrice}} </span>
+        <span style="border-right: 1px solid #ccc!important;"> Product Price: ${{item.res.productPrice}} </span>
 </div>
 </div>
 </div>

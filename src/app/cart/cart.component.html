@@ -5,7 +5,7 @@
             <h1 >Cart <span >({{totalQuantity}} items)</span></h1>
         </div>
         <div class="col-xs-12 col-md-1">
-            <span>US${{totalPrice}}</span>
+            <span>US${{totalOrderPrice}}</span>
         </div>
             <div class="col-xs-12 col-md-3">
             <button (click)="checkout()" type="button" class="btn btn-success button-primary ng-star-inserted" tabindex="0"> CHECKOUT </button>
@@ -16,16 +16,16 @@
         </div>
         <div class="col-xs-12 col-md-4">
             <p *ngIf="flagOrder">Youv'e successfully made the order!</p>
-      
     </div>
+
     <div class="row">
-        <p>Cart- from LocalStorage</p>
-        <div *ngFor="let t of test">
-            <span>productName: {{t.productName | titlecase}}</span><br>
-            <span>Quantity: {{t.qty}}</span><br>
-            <span>Price: ${{t.productPrice}}</span><br><br>
+        <p>Cart- from LocalStorage & MongoDB</p>
+
+        <div *ngFor="let item of cart; let i = index">
+            <span>Name: {{item.res.productName | titlecase}}</span><br>
+            <span>Quantity: {{item.qty}}</span><br>
+            <span>Price: ${{item.res.productPrice}}</span><br><br>
         </div>
-    
       
     </div>
   </div>

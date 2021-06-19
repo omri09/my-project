@@ -32,8 +32,8 @@ findOrderByID(ID :string){
 
 }
 
-findProductByName(name :string){
-  return this.http.get(this.path+"find/"+name);
+findProductByID(ID : any){
+  return this.http.get(this.path+"/find-product/"+ID);
 
 }
 
@@ -68,10 +68,15 @@ findProductByName(name :string){
 
   }
 
-addOrder(obj :any)
+addOrder(items :any, totalOrderPrice : any)
 {
   console.log("enter service");
-  return this.http.post(this.path+"/add-order", obj);
+  console.log(items);
+  console.log(totalOrderPrice);
+  const order= {items, totalOrderPrice}
+  console.log(order);
+
+  return this.http.post(this.path+"/add-order", order);
 
 }
 
