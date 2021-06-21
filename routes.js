@@ -27,6 +27,9 @@ router.get('/orders', function (req, res) {
 router.get('/cart', function (req, res) {
   res.sendFile(__dirname+'/dist/project/index.html');
 });
+router.get('/order-details/:id', function (req, res) {
+  res.sendFile(__dirname+'/dist/project/index.html');
+});
 
 
 router.get('/list', async (req, res) => {
