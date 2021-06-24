@@ -1,6 +1,7 @@
 
-<div class="container">
-    <div style="padding: 15px 0px; margin-bottom: 30px; background: #1c1c1b;" class="row align-items-center justify-content-between no-gutters">
+<div class="container-fluid" style="background: #1c1c1b;">
+    <div class="container">
+    <div style="padding: 15px 0px; margin-bottom: 30px;" class=" row align-items-center ">
         <div class="col-md-8">
             <h1 >Cart <span >({{totalQuantity}} items)</span></h1>
         </div>
@@ -11,11 +12,16 @@
             <button *ngIf=flagPush (click)="checkout()" type="button" class="btn btn-success button-primary ng-star-inserted" tabindex="0"> CHECKOUT </button>
         </div>
     </div>
+    </div>
+</div>
+<div class="container">
+
     <div class="row">
         <div class="col-md-8">
         </div>
         <div class="col-md-4">
             <p *ngIf="flagOrder">Youv'e successfully made the order!</p>
+        </div> 
     </div>
 
   
@@ -34,10 +40,9 @@
            <br><br>
         </div>
 
-        <div class="col-md-3" style="text-align: center;"><p>Total Price: ${{item.res.productPrice* item.qty}}</p></div>
-        <hr style="margin-top: 15px; color: white;">
+        <div class="col-md-3" style="text-align: center;">
+        <p>Total Price: ${{item.res.productPrice* item.qty}}</p>
         </div>
-      
-
-  </div>
-
+        <hr>
+        </div>
+    </div>

@@ -11,6 +11,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import {DemoMaterialModule} from '../material-module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule
     
   ],
   providers: [],

@@ -1,8 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Subscription } from 'rxjs';
 import { HttpRequestsService } from '../http-requests-service/http-requests.service';
 import { ActivatedRoute, RouteConfigLoadEnd } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 @Component({
   selector: 'app-home-component',
@@ -17,11 +20,16 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   categoryList= ["vegetables", "fruits"];
   flag=false;
   flag2= (this.flag) ? 3 : 1;
-  
 
-  constructor (private HttpRequests: HttpRequestsService, private route: ActivatedRoute){
+
+  constructor (private HttpRequests: HttpRequestsService, private route: ActivatedRoute, private _snackBar: MatSnackBar){
 
   }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });  }
+
   filterCat(){
     this.route.queryParams.subscribe(params => {
       const currentCategory :string= params['category'];

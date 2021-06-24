@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{ padding-top: 61px;
+body{ 
     background: #111;
 }
 p , span, h1{
@@ -9,28 +9,17 @@ color:white;
 button{
     color:white;
 }
-nav{
-    background: #040404;
-padding-left: 5%;
-padding-right: 5%;
-}
-.nav-link
-{
-    padding: 5px; 
-    margin: 0px 3%;
-    color: #888;
-}
-a:hover, .nav-link:focus, .nav-link:hover {
-    color: white;
-    color: white;
-}
+
+
+
 .is-active{
     background: cornflowerblue;
     color:white;
 }
 .nav-is-active{
+    color: black;
     border-style: solid;
-    border-color: white;
+    border-color: black;
     border-width: 0px 0px 5px 0px;
 }
 a{
@@ -43,4 +32,9 @@ a{
     font-size: 1.125rem;
     margin: 0 auto;
     padding: .9375rem 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+hr{
+border: 0; clear:both; display:block; width: 100%; background-color:white; height: 1px;
 }
