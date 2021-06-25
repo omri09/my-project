@@ -29,9 +29,8 @@
         <div class="row" *ngFor="let item of cart; let i = index">
             <div class="col-md-3"><img [src]="item.res.productImage" style="border-radius:5px; width:100%"/></div>
             <div class="col-md-3">
-            <p>Name: {{item.res.productName | titlecase}}</p>
-            <p>Quantity: {{item.qty}}</p>
-            <p>Price: ${{item.res.productPrice}}</p>
+            <p>{{item.res.productName | titlecase}}</p>
+            <p>Product Price: ${{item.res.productPrice}}</p>
         </div>
         <div class="col-md-3" style="text-align: center;">
 <mat-form-field appearance="fill" >
