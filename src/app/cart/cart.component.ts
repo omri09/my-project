@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequestsService } from '../http-requests-service/http-requests.service';
+import { HttpRequestsService } from '../service/http-requests.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -7,8 +7,8 @@ import { HttpRequestsService } from '../http-requests-service/http-requests.serv
 })
 export class CartComponent  {
   cart: any;
-  flagOrder :boolean = false;
-  flagPush :boolean = true;
+  orderSuccessMessage :boolean = false;
+  createOrder :boolean = true;
   totalOrderPrice : number = 0;
   totalQuantity : number = 0;
 
@@ -53,7 +53,7 @@ export class CartComponent  {
   }
 
 checkout(){
-  this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.flagOrder=true);
+  this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.orderSuccessMessage=true);
 
 }
 }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HttpRequestsService } from '../http-requests-service/http-requests.service';
+import { HttpRequestsService } from '../service/http-requests.service';
 
 @Component({
   selector: 'app-orders',

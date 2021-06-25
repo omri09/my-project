@@ -9,7 +9,7 @@
             <span>US${{totalOrderPrice}}</span>
         </div>
             <div class="col-md-3">
-            <button *ngIf=flagPush (click)="checkout()" type="button" class="btn btn-success button-primary ng-star-inserted" tabindex="0"> CHECKOUT </button>
+            <button *ngIf=createOrder (click)="checkout()" type="button" class="btn btn-success button-primary ng-star-inserted" tabindex="0"> CHECKOUT </button>
         </div>
     </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-md-8">
         </div>
         <div class="col-md-4">
-            <p *ngIf="flagOrder">Youv'e successfully made the order!</p>
+            <p *ngIf="orderSuccessMessage">Youv'e successfully made the order!</p>
         </div> 
     </div>
 
@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-3" style="text-align: center;">
             <span>Edit Quantity: </span><br>
-            <input (keyup)= "flagPush=false;" (change)= "updateQuantity(item.res._id, qty.value); flagPush=true;" style="text-align: center;" type="number" #qty min="1"  value="{{item.qty}}"><br><br>
+            <input (keyup)= "createOrder=false;" (change)= "updateQuantity(item.res._id, qty.value); createOrder=true;" style="text-align: center;" type="number" #qty min="1"  value="{{item.qty}}"><br><br>
            <button type="button" class="btn btn-outline-primary" (click)="updateQuantity(item.res._id, qty.value)">Update</button>
            <br><br>
         </div>

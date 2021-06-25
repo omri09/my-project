@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpRequestsService } from '../http-requests-service/http-requests.service';
+import { HttpRequestsService } from '../service/http-requests.service';
 
 @Component({
   selector: 'app-nav',

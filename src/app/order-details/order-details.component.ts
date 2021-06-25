@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { HttpRequestsService } from '../http-requests-service/http-requests.service';
+import { HttpRequestsService } from '../service/http-requests.service';
 
 @Component({
   selector: 'app-order-details',
