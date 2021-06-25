@@ -25,6 +25,7 @@ export class CartComponent  {
   {
     localStorage.removeItem(id);
     this.searchCart();
+    this.updateItems();
 
   }
  updateItems()
@@ -67,6 +68,7 @@ checkout(){
   this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.orderSuccessMessage=true);
   localStorage.clear();
   this.searchCart();
+  this.updateItems();
 
 }
 }
