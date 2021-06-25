@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { HttpRequestsService } from '../service/http-requests.service';
 import { ActivatedRoute, RouteConfigLoadEnd } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,14 +20,14 @@ export class HomeComponentComponent implements OnDestroy {
   //flag2 = (this.flag) ? 3 : 1;
 
 
-  constructor(private HttpRequests: HttpRequestsService, private route: ActivatedRoute, private _snackBar: MatSnackBar) {
+  constructor(private HttpRequests: HttpRequestsService, private route: ActivatedRoute, private router: Router, private _snackBar: MatSnackBar) {
     this.getProductList();
 
   }
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+  openSnackBar() {
+    this._snackBar.open('Product Added Successfully', 'Go to Cart', {
       duration: 3000
-    });
+    }).onAction().subscribe(()=> this.router.navigateByUrl('cart'));
   }
 
   filterByCategory() {

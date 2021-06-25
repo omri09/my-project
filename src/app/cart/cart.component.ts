@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../service/http-requests.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -7,19 +9,22 @@ import { HttpRequestsService } from '../service/http-requests.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent  {
-  cart: any;
-  orderSuccessMessage :boolean = false;
+  cart :any =[];
   createOrder :boolean = true ;
   totalOrderPrice : number = 0;
   totalQuantity : number = 0;
    amount = [
     "1","2","3","4","5","6","7","8","9","10"
   ]
-  constructor(private httpReq : HttpRequestsService) { 
+  constructor(private httpReq : HttpRequestsService, private router: Router, private _snackBar: MatSnackBar) { 
     this.searchCart();
     this.updateItems();
     if(this.totalQuantity==0)
       this.createOrder =false;
+  }
+  openSnackBar() {
+    this._snackBar.open('Order Added Successfully', 'Go to My Orders')
+    .onAction().subscribe(()=> this.router.navigateByUrl('orders'));
   }
   removeItem(id: string)
   {
@@ -65,11 +70,13 @@ export class CartComponent  {
   }
 
 checkout(){
-  this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.orderSuccessMessage=true);
+  this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(()=> this.openSnackBar());
+  //this.router.navigateByUrl('orders')
   localStorage.clear();
-  this.searchCart();
+  this.cart =[];
+  this.totalQuantity=0;
+  this.totalOrderPrice=0;
   this.updateItems();
-
 }
 }
 

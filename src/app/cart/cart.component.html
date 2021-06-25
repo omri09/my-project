@@ -16,16 +16,6 @@
 </div>
 <div class="container">
 
-    <div class="row">
-        <div class="col-md-8">
-        </div>
-        <div class="col-md-4">
-            <p *ngIf="orderSuccessMessage">Youv'e successfully made the order!</p>
-        </div> 
-    </div>
-
-  
-
         <div class="row" *ngFor="let item of cart; let i = index">
             <div class="col-md-3"><img [src]="item.res.productImage" style="border-radius:5px; width:100%"/></div>
             <div class="col-md-3">
