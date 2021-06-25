@@ -21,6 +21,12 @@ export class CartComponent  {
     if(this.totalQuantity==0)
       this.createOrder =false;
   }
+  removeItem(id: string)
+  {
+    localStorage.removeItem(id);
+    this.searchCart();
+
+  }
  updateItems()
  {
   this.httpReq.refreshCart().subscribe(res => {
@@ -59,6 +65,8 @@ export class CartComponent  {
 
 checkout(){
   this.httpReq.addOrder(this.cart, this.totalOrderPrice).subscribe(res=> this.orderSuccessMessage=true);
+  localStorage.clear();
+  this.searchCart();
 
 }
 }

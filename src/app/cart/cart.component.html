@@ -49,6 +49,7 @@
 
         <div class="col-md-3" style="text-align: center;">
         <p>Total Price: ${{item.res.productPrice* item.qty}}</p>
+        <button (click)="removeItem(item.res._id)" style="color:black; padding:5px 15px">Remove</button>
         </div>
         <hr>
         </div>
