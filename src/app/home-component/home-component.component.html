@@ -16,8 +16,8 @@
    <p>{{item._id}}</p>
    <p>{{item.productName | titlecase}}</p>
    <p>${{item.productPrice}}</p>
-   Quantity: <input style="text-align: center;" type="number" #quantity name="quantity" value=1 min="1" max="10">
-   <button (click)="addToCart(item, quantity.value); openSnackBar('Added to cart', 'Close')" style="width: 100%; background: green; color:white; padding:15px;">Add to Cart</button>
+   Quantity: <input style="text-align: center;" type="number" #quantity name="quantity" value=1 min="1" max="10"><br><br>
+   <button type="button" class="btn btn-secondary " (click)="addToCart(item, quantity.value); openSnackBar('Added to cart', 'Close')" style="width: 100%;   padding:15px;">Add to Cart</button>
     </div>
     </div>
 </div>
