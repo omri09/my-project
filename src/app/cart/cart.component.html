@@ -34,9 +34,16 @@
             <p>Price: ${{item.res.productPrice}}</p>
         </div>
         <div class="col-md-3" style="text-align: center;">
-            <span>Edit Quantity: </span><br>
-            <input (keyup)= "createOrder=false;" (change)= "updateQuantity(item.res._id, qty.value); createOrder=true;" style="text-align: center;" type="number" #qty min="1"  value="{{item.qty}}"><br><br>
-           <button type="button" class="btn btn-outline-primary" (click)="updateQuantity(item.res._id, qty.value)">Update</button>
+<mat-form-field appearance="fill" >
+  <mat-label style="color: white">Quantity: {{item.qty}}</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let a of amount" [value]="item.qty" (click)= "updateQuantity(item.res._id, a); createOrder=true;">
+      {{a}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+            <!-- <input (keyup)= "createOrder=false;" (change)= "updateQuantity(item.res._id, qty.value); createOrder=true;" style="text-align: center;" type="number" #qty min="1"  value="{{item.qty}}"><br><br> 
+           <button type="button" class="btn btn-outline-primary" (click)="updateQuantity(item.res._id, qty.value)">Update</button>-->
            <br><br>
         </div>
 

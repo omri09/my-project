@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../service/http-requests.service';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -8,13 +9,17 @@ import { HttpRequestsService } from '../service/http-requests.service';
 export class CartComponent  {
   cart: any;
   orderSuccessMessage :boolean = false;
-  createOrder :boolean = true;
+  createOrder :boolean = true ;
   totalOrderPrice : number = 0;
   totalQuantity : number = 0;
-
+   amount = [
+    "1","2","3","4","5","6","7","8","9","10"
+  ]
   constructor(private httpReq : HttpRequestsService) { 
     this.searchCart();
     this.updateItems();
+    if(this.totalQuantity==0)
+      this.createOrder =false;
   }
  updateItems()
  {

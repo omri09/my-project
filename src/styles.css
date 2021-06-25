@@ -10,8 +10,13 @@ button{
     color:white;
 }
 
-
-
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(255,255,255,.4);
+}
+.mat-option-text
+{
+    color: black;
+}
 .is-active{
     background: cornflowerblue;
     color:white;
