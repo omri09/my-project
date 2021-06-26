@@ -7,18 +7,14 @@ import { HttpRequestsService } from '../service/http-requests.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  count: number=0;
-  constructor(private httpRequests: HttpRequestsService){
+  count: number = 0;
+  constructor(private httpRequests: HttpRequestsService) {
 
     httpRequests.refreshCart().subscribe(res => {
       this.count = res;
-      
+
     });
 
   }
 
-
-
 }
-
-
