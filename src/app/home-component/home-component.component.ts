@@ -23,17 +23,6 @@ export class HomeComponentComponent implements OnDestroy {
     this.getProductList();
 
   }
-  /*
-  openSnackBar() {
-    this._snackBar.open('Product Added Successfully', 'Go to Cart', {
-      duration: 3000
-    }).onAction().subscribe(()=> this.router.navigateByUrl('cart'));
-  }
-
-   addToCart(item: any, quantity: any) {
-    this.HttpRequests.addToCart(item, quantity);
-    this.HttpRequests.refreshCart();
-  }*/
 
   filterByCategory() {
     this.route.queryParams.subscribe(params => {
@@ -57,16 +46,6 @@ export class HomeComponentComponent implements OnDestroy {
     });
 
   }
-
-  addProduct() {
-    this.HttpRequests.addProduct().subscribe(() => {
-      this.getProductList();
-    });
-
-  }
-
-
-
 
 
   ngOnDestroy() {
