@@ -1,31 +1,26 @@
 <div class="container" style="padding-top: 30px;">
-<div class= "row" >
-    <div class= "col-md-2" style="padding:15px">
+<div class= "row align-items-center" style="padding-bottom: 30px;" >
+    <div class= "col-md-3">
     <input #query (keyup)="searchProduct(query.value)" type="text" class="form-control" placeholder="search..">
-    <div style="padding:5px 0px">
-        <a  routerLink="/" >All Categories</a>
-    </div>
-    <div style="padding:5px 0px"  *ngFor="let c of categoryList">
-        <a [routerLinkActive]="['is-active']"  routerLink="/" [queryParams]={category:c}>{{c | titlecase}}</a>
-    </div>
+</div>
+<div class= "col-md-2 text-center">
+    <a  routerLink="/" >All Categories</a>
+</div>
+<div class= "col-md-2 text-center" *ngFor="let c of categoryList">
+    <a [routerLinkActive]="['is-active']"  routerLink="/" [queryParams]={category:c}>{{c | titlecase}}</a>
+</div>
 </div>
 
-    <div class= "col-md-10">
-   <div *ngFor="let item of filteredProductList"  style="margin:15px; text-align: center; border-radius: 10px; border: solid; border-width: 5px; border-color: white; display: inline-block;  background: grey; " >
-   <img style="width:240px; height: 180px" src= {{item.productImage}}><br>
-   <p>{{item._id}}</p>
-   <p>{{item.productName | titlecase}}</p>
-   <p>${{item.productPrice}}</p>
-   <!--  Quantity: <input style="text-align: center;" type="number" #quantity name="quantity" value=1 min="1" max="10"><br><br>-->
+
+<div class= "row row-eq-height" >
+   <div class= "col-md-3" *ngFor="let item of filteredProductList"  >
+    <app-card [item]=item></app-card>
+   
+   <!--  Quantity: <input style="text-align: center;" type="number" #quantity name="quantity" value=1 min="1" max="10"><br><br>
    <button type="button" class="btn btn-secondary " (click)="addToCart(item, 1); openSnackBar()" style="width: 100%;   padding:15px;">Add to Cart</button>
-    </div>
+   -->
     </div>
 </div>
 </div>
     
 
-
-
-
-  
-  

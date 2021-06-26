@@ -5,7 +5,8 @@ const Product = mongoose.model('Product', new mongoose.Schema({
   productName : String,
   productPrice : Number,
   productImage: String,
-  categoryName: String
+  categoryName: String,
+  productDescription: String
 }),'Products');
 
 const Order = mongoose.model('Order', new mongoose.Schema({

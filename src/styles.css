@@ -3,9 +3,10 @@
 body{ 
     background: #111;
 }
-p , span, h1{
-color:white;
-}
+[class*="col-"] {
+    padding: 7.5px;
+  }
+  
 button{
     color:white;
 }

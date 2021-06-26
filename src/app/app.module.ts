@@ -12,6 +12,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import {DemoMaterialModule} from '../material-module';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {DemoMaterialModule} from '../material-module';
     HomeComponentComponent,
     OrdersComponent,
     CartComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import {DemoMaterialModule} from '../material-module';
     DemoMaterialModule
     
   ],
-  providers: [],
+  providers: [CardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
