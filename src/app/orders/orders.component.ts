@@ -14,13 +14,11 @@ export class OrdersComponent implements OnDestroy {
 
   constructor(private HttpRequests: HttpRequestsService) {
    
-      this.orderSubscription=this.HttpRequests.getOrdersList().subscribe(response=> {this.orders=response;});
-  
+      this.orderSubscription=this.HttpRequests.getOrdersList().subscribe(response=> this.orders=response, ()=>"", ()=>console.log(this.orders));
+    
     
    }
-   orderDetails(){
-     
-   }
+
  ngOnDestroy(){
   this.orderSubscription.unsubscribe();
 

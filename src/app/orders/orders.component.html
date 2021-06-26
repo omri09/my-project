@@ -1,12 +1,14 @@
-<div class="container" style="text-align: center; padding-top: 30px;">
-    <p>My Orders - from MongoDB</p>
-    <div *ngFor="let order of orders">
-        <span>orderID: {{order._id}}</span><br>
-
-        <a [routerLink]= "['/order-details', order._id]">
-            <button type="button" class="btn btn-secondary">Take Me to the Order Details</button>
-
-        </a>
-        <br>
-    <br>
+<div class="container" style="margin-top: 30px;">
+  <h1 style="color:white">Orders</h1>
+        <div class="row" *ngFor="let order of orders" style="box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+ margin:30px 0px;   background-color: white;">
+        <div class="col-12 col-md-4">
+          <p>orderID</p>
+          <p style="color: rgba(0,0,0,.54); font-size: 14px;">{{order._id}}</p>
+          <button mat-raised-button color="primary" [routerLink]= "['/order-details', order._id]">Take Me to the Order Details</button>
+        </div>
+        <div *ngFor="let r of order.orderDetails" class="col-6 col-md-2" style="text-align: center;">
+            <img style="border-radius: 99px; width:100%" [src]="r.res.productImage">
+    </div>
+    </div>
     </div>
